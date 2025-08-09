@@ -29,18 +29,19 @@ export const even_zeros = (L: List<Digit>): [bigint, boolean] => {
   // {{ L = L_0 }}
 
   // TODO (Task 6a): uncomment this variables & fill in the blanks
-  // let a: bigint = ______;
-  // let b: boolean = ______;
+  let a: bigint = 0n;
+  let b: boolean = true;
 
   // Inv: zeros(L_0) = a + zeros(L) and even(L_0) = (b = even(L))
   while (L.kind !== "nil") {
-    // ...
-    // TODO: fill in the code here
-    // ...
+    const d = L.hd;
+
+    if (d==0) a += 1n; // Count zeros
+    if (d==1) b = !b; // Toggle evenness
 
     L = L.tl;
   }
 
   // {{ a = zeros(L_0) and b = even(L_0) }}
-  return [-1n, false]; // TODO: fill in values with correct variables
+  return [a, b]; // TODO: fill in values with correct variables
 };
