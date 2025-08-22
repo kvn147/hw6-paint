@@ -9,6 +9,10 @@ const RADIUS: number = 5;
 
 type CanvasProps = {
   // TODO: initialize with needed props
+  paintInventory: number[];
+  dots: Dot[];
+  onBackClick: (newInventory: number[], newDots: Dot[]) => void;
+  
 };
 
 type CanvasState = {
@@ -34,8 +38,8 @@ export class Canvas extends Component<CanvasProps, CanvasState> {
 
     this.state = {
       currColor: undefined,
-      dots: [],
-      paintInventory: [10, 10, 10, 10, 10, 10],
+      dots: this.props.dots || [],
+      paintInventory: this.props.paintInventory,
       isMouseDown: false
     };
   }
@@ -182,5 +186,6 @@ export class Canvas extends Component<CanvasProps, CanvasState> {
 
   doBackClick = (): void => {
     // TODO: fill this in to use callback passed from App
+    this.props.onBackClick(this.state.paintInventory, this.state.dots);
   }
 }

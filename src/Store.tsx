@@ -4,6 +4,8 @@ import { PaintPot } from './PaintPot';
 
 type StoreProps = {
   // TODO: initialize with needed props
+  paintInventory: number[];
+  onBackClick: (newInventory: number[]) => void;
 };
 
 type StoreState = {
@@ -23,7 +25,7 @@ export class Store extends Component<StoreProps, StoreState> {
 
     this.state = {
       err: "",
-      paintInventory: [0, 0, 0, 0, 0, 0]
+      paintInventory: this.props.paintInventory
     };
   }
 
@@ -72,5 +74,6 @@ export class Store extends Component<StoreProps, StoreState> {
 
   doBackClick = (): void => {
     // TODO: fill this in to use callback passed from App
+    this.props.onBackClick(this.state.paintInventory);
   }
 }

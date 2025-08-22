@@ -4,6 +4,8 @@ import { PaintPot } from './PaintPot';
 
 type PaletteProps = {
   // TODO: initialize with needed props
+  paintInventory: number[];
+  onBackClick: (newInventory: number[]) => void;
 };
 
 type PaletteState = {
@@ -30,7 +32,7 @@ export class Palette extends Component<PaletteProps, PaletteState> {
       firstColor: "",
       secondColor: "",
       err: "",
-      paintInventory: [10, 0, 10, 0, 10, 0] // Initialized with some RYB for testing
+      paintInventory: this.props.paintInventory
     };
   }
 
@@ -153,5 +155,6 @@ export class Palette extends Component<PaletteProps, PaletteState> {
 
   doBackClick = (): void => {
     // TODO: fill this in to use callback passed from App
+    this.props.onBackClick(this.state.paintInventory);
   }
 }
